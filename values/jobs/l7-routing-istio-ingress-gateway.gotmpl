@@ -15,4 +15,4 @@ tasks:
       # Perform this from istio-system namespace
       host='istio-ingressgateway.istio-system.svc.cluster.local'
       port='80'
-      curl --insecure --max-time 5 -H "Host: $http_host" -H "X-Forwarded-Proto: https" "http://${host}/"
+      curl --insecure --max-time 5 -H "Host: $http_host" -H "X-Forwarded-Proto: https" "${host}:${port}/"
