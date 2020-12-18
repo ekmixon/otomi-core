@@ -55,7 +55,7 @@ spec:
       volumes:
         - name: fakeroot
           configMap:
-            name: fakeroot
+            name: {{ $name }}-fakeroot
         {{- if $spec.volumes }}
         {{- $spec.volumes | toYaml | nindent 8 }}
         {{- end }}

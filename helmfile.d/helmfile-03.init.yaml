@@ -6,12 +6,6 @@ bases:
 {{- $c := $v.charts }}
 
 releases:
-  - name: jobs-artifacts
-    installed: true
-    namespace: maintenance
-    labels:
-      tag: jobs
-    <<: *raw
   - name: knative-init
     installed: true
     namespace: default
