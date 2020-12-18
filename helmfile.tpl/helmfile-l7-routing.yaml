@@ -1,0 +1,20 @@
+bases:
+  - ../helmfile.d/snippets/defaults.gotmpl
+---
+{{ readFile "../helmfile.d/snippets/templates.gotmpl" }}
+{{- $v := .Environment.Values }}
+{{- $c := $v.charts }}
+
+releases:
+  - name: jobs-l7-routing-svc
+    installed: true
+    namespace: keycloak
+    <<: *jobs-test
+  - name: jobs-l7-routing-istio-ingress-gateway
+    installed: true
+    namespace: istio-system
+    <<: *jobs-test
+  - name: jobs-l7-routing-ingress-controller
+    installed: true
+    namespace: ingress
+    <<: *jobs-test

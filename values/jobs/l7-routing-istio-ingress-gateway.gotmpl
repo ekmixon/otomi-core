@@ -1,0 +1,18 @@
+{{- $v := .Environment.Values }}
+{{- $sut := printf "keycloak.%s" $v.cluster.domain }}
+
+tasks:
+  l7-routing-istio-ingress-gateway:
+    type: job
+    enabled: true
+    image:
+      repository: curlimages/curl
+      tag: 7.74.0
+    script: |
+      #!/usr/bin/env bash
+      set -eux
+      readonly http_host='{{ $sut }}'
+      # Perform this from istio-system namespace
+      host='istio-ingressgateway.istio-system.svc.cluster.local'
+      port='80'
+      curl --insecure --max-time 5 --header "Host: $http_host" "${host}:${port}"
