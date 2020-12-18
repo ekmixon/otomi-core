@@ -18,3 +18,7 @@ releases:
     installed: true
     namespace: ingress
     <<: *jobs-test
+  - name: jobs-l7-routing-public-svc
+    installed: true
+    namespace: default
+    <<: *jobs-test
