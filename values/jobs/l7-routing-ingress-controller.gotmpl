@@ -15,4 +15,4 @@ tasks:
       # Perform this from ingress namespace
       host='nginx-ingress-controller.ingress.svc.cluster.local'
       port='80'
-      curl --insecure --max-time 5 --header "Host: $http_host" "${host}:${port}"
+      curl --insecure --max-time 5 -H "Host: $http_host" -H "X-Forwarded-Proto: https" "http://${host}/"
