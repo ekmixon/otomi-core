@@ -15,4 +15,4 @@ tasks:
       # Perform this from istio-system namespace
       host='keycloak-http.keycloak.svc.cluster.local'
       port='80'
-      curl --insecure --max-time 5 -H "Host: $http_host" -H "X-Forwarded-Proto: https" "${host}:${port}/"
+      curl --insecure --max-time 5 -H "Host: $http_host" -H "X-Forwarded-Host: $http_host" -H "X-Scheme: https" -H "X-Forwarded-Proto: https" "${host}:${port}/"
