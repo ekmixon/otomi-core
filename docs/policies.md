@@ -41,6 +41,7 @@ The policy engine is aware of the following annotations for a workload:
 ```
 annotations:
   policy.otomi.io/ignore: ${policy}
+  policy.otomi.io/ignore.${container-name}: ${policy}
   policy.otomi.io/parameters.${policy}: '{"extra":"parameters"}'
 ```
 
