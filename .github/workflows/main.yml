@@ -83,6 +83,7 @@ jobs:
           release_tag=v${COMMIT_MSG#* }
           sed --in-place "s/APP_VERSION_PLACEHOLDER/$release_tag/g" chart/otomi-installer/Chart.yaml
       - if: '${{ steps.chart_prepare.outputs.has_chart_changes }}'
+        name: Convert values-schema.yaml to JSON
         uses: fabasoad/yaml-json-xml-converter-action@main
         id: convert-values-schema
         with:
@@ -90,6 +91,7 @@ jobs:
           from: 'yaml'
           to: 'json'
       - if: '${{ steps.chart_prepare.outputs.has_chart_changes }}'
+        name: Save values.schema.json
         id: save_chart_schema
         run: |
           echo "${{ steps.json2yaml.outputs.data }}" > chart/otomi-installer/values.schema.json
